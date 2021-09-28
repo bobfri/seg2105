@@ -1,7 +1,9 @@
 package com.example.simplecalculator_lab1;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -171,25 +173,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(optr!=Operator.none){
                     Execute();
-                    display.setText(val1.toString());
+                    String s=val1.toString();
+                    s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
+                    display.setText(s);
 
                 }
                 optr = Operator.add;
-                val1 = Double.parseDouble(display.getText().toString());
-                clr_result=true;
-            }
-        });
-        btnPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(optr!=Operator.none){
-                    Execute();
-                    display.setText(val1.toString());
-
+                if(display.getText()!=""){
+                    val1 = Double.parseDouble(display.getText().toString());
+                }else{
+                    optr = Operator.none;
                 }
-                optr = Operator.add;
-                val1 = Double.parseDouble(display.getText().toString());
                 clr_result=true;
+                flipcolor(5);
             }
         });
         btnMinus.setOnClickListener(new View.OnClickListener() {
@@ -197,12 +193,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(optr!=Operator.none){
                     Execute();
-                    display.setText(val1.toString());
+                    String s=val1.toString();
+                    s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
+                    display.setText(s);
 
                 }
                 optr = Operator.sub;
-                val1 = Double.parseDouble(display.getText().toString());
+                if(display.getText()!=""){
+                    val1 = Double.parseDouble(display.getText().toString());
+                }else{
+                    display.setText("-");
+                    optr = Operator.none;
+                }
                 clr_result=true;
+                flipcolor(4);
             }
         });
         btnMult.setOnClickListener(new View.OnClickListener() {
@@ -210,12 +214,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(optr!=Operator.none){
                     Execute();
-                    display.setText(val1.toString());
+                    String s=val1.toString();
+                    s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
+                    display.setText(s);
 
                 }
                 optr = Operator.mul;
-                val1 = Double.parseDouble(display.getText().toString());
+                if(display.getText()!=""){
+                    val1 = Double.parseDouble(display.getText().toString());
+                }else{
+                    optr = Operator.none;
+                }
                 clr_result=true;
+                flipcolor(3);
             }
         });
         btnDiv.setOnClickListener(new View.OnClickListener() {
@@ -223,12 +234,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(optr!=Operator.none){
                     Execute();
-                    display.setText(val1.toString());
+                    String s=val1.toString();
+                    s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
+                    display.setText(s);
 
                 }
                 optr = Operator.div;
-                val1 = Double.parseDouble(display.getText().toString());
+                if(display.getText()!=""){
+                    val1 = Double.parseDouble(display.getText().toString());
+                }else{
+                    optr = Operator.none;
+                }
+
                 clr_result=true;
+                flipcolor(2);
             }
         });
         btnEql.setOnClickListener(new View.OnClickListener() {
@@ -236,16 +255,40 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(optr!=Operator.none){
                     Execute();
-                    display.setText(val1.toString());
+                    String s=val1.toString();
+                    s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
+                    display.setText(s);
+                    val1 = Double.parseDouble(display.getText().toString());
 
                 }
+                btnEql.setBackgroundColor(Color.parseColor("#FFBB86FC"));
+                flipcolor(1);
                 optr = Operator.none;
-                val1 = Double.parseDouble(display.getText().toString());
                 clr_result=true;
             }
 
 
         });
+    }
+
+    private void flipcolor(int i) {
+        btnEql.setBackgroundColor(Color.parseColor("#FF6200EE"));
+        btnDiv.setBackgroundColor(Color.parseColor("#FF6200EE"));
+        btnMult.setBackgroundColor(Color.parseColor("#FF6200EE"));
+        btnMinus.setBackgroundColor(Color.parseColor("#FF6200EE"));
+        btnPlus.setBackgroundColor(Color.parseColor("#FF6200EE"));
+        switch (i){
+            case 1:btnEql.setBackgroundColor(Color.parseColor("#FFBB86FC"));
+                break;
+            case 2: btnDiv.setBackgroundColor(Color.parseColor("#FFBB86FC"));
+                break;
+            case 3:btnMult.setBackgroundColor(Color.parseColor("#FFBB86FC"));
+                break;
+            case 4:btnMinus.setBackgroundColor(Color.parseColor("#FFBB86FC"));
+                break;
+            case 5:btnPlus.setBackgroundColor(Color.parseColor("#FFBB86FC"));
+                break;
+        }
     }
 
     private void Execute() {

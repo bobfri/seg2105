@@ -25,7 +25,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="#A6A4A4"
                 android:orientation="horizontal"
                 android:padding="6dp"
                 android:paddingLeft="6dp"
@@ -44,13 +43,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/_7"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
 
@@ -59,13 +56,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/_4"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
 
@@ -74,13 +69,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/_1"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
 
@@ -89,13 +82,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/_0"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
                 </LinearLayout>
@@ -111,14 +102,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:fontFamily="sans-serif-medium"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/_8"
-                        android:textColor="#000000"
                         android:textSize="34sp" />
 
                     <Button
@@ -126,13 +115,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/_5"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
 
@@ -141,13 +128,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/_2"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
 
@@ -156,13 +141,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/dot"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
                 </LinearLayout>
@@ -178,13 +161,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/_9"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
 
@@ -193,13 +174,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/_6"
-                        android:textColor="#000000"
                         android:textSize="34sp" />
 
                     <Button
@@ -207,13 +186,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/_3"
-                        android:textColor="#000000"
                         android:textSize="34sp" />
 
                     <Button
@@ -221,13 +198,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/c"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
                 </LinearLayout>
@@ -243,13 +218,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/plus"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
 
@@ -258,13 +231,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/minus"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
 
@@ -273,13 +244,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/multiply"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
 
@@ -288,13 +257,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
                         android:insetLeft="6dp"
                         android:insetTop="6dp"
                         android:insetRight="6dp"
                         android:insetBottom="6dp"
                         android:text="@string/divide"
-                        android:textColor="#000000"
                         android:textSize="34sp"
                         tools:ignore="TextContrastCheck" />
                 </LinearLayout>
@@ -304,13 +271,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:backgroundTint="#FFFFFF"
                     android:insetLeft="6dp"
                     android:insetTop="6dp"
                     android:insetRight="6dp"
                     android:insetBottom="6dp"
                     android:text="@string/equal"
-                    android:textColor="#000000"
                     android:textSize="34sp"
                     tools:ignore="TextContrastCheck" />
             </LinearLayout>
