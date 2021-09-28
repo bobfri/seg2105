@@ -247,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
     private void Execute() {
         val2 = Double.parseDouble(display.getText().toString());
         switch (optr){
