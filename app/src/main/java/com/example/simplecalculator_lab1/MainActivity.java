@@ -11,7 +11,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnPlus, btnMinus, btnMult, btnDec, btnDiv, btnClr, btnEql;
+    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnPlus, btnMinus, btnMult, btnDec, btnDiv, btnClr, btnEql, btnNeg;
 
     TextView display;
 
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btnDiv = findViewById(R.id.btnDiv);
         btnClr = findViewById(R.id.btnClr);
         btnEql = findViewById(R.id.btnEql);
+        btnNeg = findViewById(R.id.btnNeg);
         display = findViewById(R.id.displayNum);
 
         btn0.setOnClickListener(new View.OnClickListener() {
@@ -154,106 +155,145 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText() + ".");
             }
         });
+        btnNeg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(clr_result){
+                    display.setText("");
+                    clr_result=false;
+                }
+                display.setText("-");
+            }
+        });
         btnClr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(optr!=Operator.none){
                     if(display.getText()==""){
                         optr=Operator.none;
+                        flipcolor(0);
                     }
                 }
                 else{
                     val1=null;
+                    flipcolor(0);
                 }
                 display.setText("");
+
             }
         });
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(optr!=Operator.none){
+                if(optr!=Operator.none&&display.getText()!=""){
                     Execute();
                     String s=val1.toString();
                     s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
                     display.setText(s);
 
                 }
+                flipcolor(5);
                 optr = Operator.add;
                 if(display.getText()!=""){
-                    val1 = Double.parseDouble(display.getText().toString());
+                    try {
+                        val1 = Double.parseDouble(display.getText().toString());
+                    }catch (Exception e){
+                        display.setText("Invalid Syntax");
+                        optr = Operator.none;
+                        flipcolor(0);
+                    }
                 }else{
                     optr = Operator.none;
+                    flipcolor(0);
                 }
                 clr_result=true;
-                flipcolor(5);
             }
         });
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(optr!=Operator.none){
+                if(optr!=Operator.none&&display.getText()!=""){
                     Execute();
                     String s=val1.toString();
                     s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
                     display.setText(s);
 
                 }
+
+                flipcolor(4);
                 optr = Operator.sub;
                 if(display.getText()!=""){
-                    val1 = Double.parseDouble(display.getText().toString());
+                    try {
+                        val1 = Double.parseDouble(display.getText().toString());
+                    }catch (Exception e){
+                        display.setText("Invalid Syntax");
+                        optr = Operator.none;
+                        flipcolor(0);
+                    }
                 }else{
-                    display.setText("-");
                     optr = Operator.none;
+                    flipcolor(0);
                 }
                 clr_result=true;
-                flipcolor(4);
+
             }
         });
         btnMult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(optr!=Operator.none){
+                if(optr!=Operator.none&&display.getText()!=""){
                     Execute();
                     String s=val1.toString();
                     s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
                     display.setText(s);
-
                 }
                 optr = Operator.mul;
+                flipcolor(3);
                 if(display.getText()!=""){
-                    val1 = Double.parseDouble(display.getText().toString());
+                    try {
+                        val1 = Double.parseDouble(display.getText().toString());
+                    }catch (Exception e){
+                        display.setText("Invalid Syntax");
+                        optr = Operator.none;
+                        flipcolor(0);
+                    }
                 }else{
                     optr = Operator.none;
+                    flipcolor(0);
                 }
                 clr_result=true;
-                flipcolor(3);
             }
         });
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(optr!=Operator.none){
+                if(optr!=Operator.none&&display.getText()!=""){
                     Execute();
                     String s=val1.toString();
                     s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
                     display.setText(s);
-
                 }
                 optr = Operator.div;
+                flipcolor(2);
                 if(display.getText()!=""){
-                    val1 = Double.parseDouble(display.getText().toString());
+                    try {
+                        val1 = Double.parseDouble(display.getText().toString());
+                    }catch (Exception e){
+                        display.setText("Invalid Syntax");
+                        optr = Operator.none;
+                        flipcolor(0);
+                    }
                 }else{
                     optr = Operator.none;
+                    flipcolor(0);
                 }
-
                 clr_result=true;
-                flipcolor(2);
             }
         });
         btnEql.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(optr!=Operator.none){
+                if(optr!=Operator.none&&display.getText()!=""){
                     Execute();
                     String s=val1.toString();
                     s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
@@ -261,7 +301,6 @@ public class MainActivity extends AppCompatActivity {
                     val1 = Double.parseDouble(display.getText().toString());
 
                 }
-                btnEql.setBackgroundColor(Color.parseColor("#FFBB86FC"));
                 flipcolor(1);
                 optr = Operator.none;
                 clr_result=true;
@@ -288,22 +327,39 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 5:btnPlus.setBackgroundColor(Color.parseColor("#FFBB86FC"));
                 break;
+            default:
+                break;
         }
     }
 
     private void Execute() {
-        val2 = Double.parseDouble(display.getText().toString());
-        switch (optr){
-            case add: val1 += val2;
-                break;
-            case sub: val1 -= val2;
-                break;
-            case mul: val1 = val1*val2;
-                break;
-            case div: val1 = val1/val2;
-                break;
-            default: break;
+        if(!clr_result) {
+            try {
+                val2 = Double.parseDouble(display.getText().toString());
+            }catch (Exception e){
+                display.setText("Invalid Syntax");
+            }
+        }
+        try {
+            switch (optr) {
+                case add:
+                    val1 += val2;
+                    break;
+                case sub:
+                    val1 -= val2;
+                    break;
+                case mul:
+                    val1 = val1 * val2;
+                    break;
+                case div:
+                    val1 = val1 / val2;
+                    break;
+                default:
+                    break;
 
+            }
+        }catch (Exception e){
+            display.setText("Math Error");
         }
     }
 }

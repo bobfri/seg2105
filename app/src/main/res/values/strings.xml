@@ -17,4 +17,5 @@
     <string name="minus">-</string>
     <string name="multiply">×</string>
     <string name="divide">÷</string>
+    <string name="neg">(-)</string>
 </resources>
