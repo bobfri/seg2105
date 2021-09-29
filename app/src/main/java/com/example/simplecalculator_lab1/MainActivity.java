@@ -158,11 +158,15 @@ public class MainActivity extends AppCompatActivity {
         btnNeg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(clr_result){
+                if (clr_result) {
                     display.setText("");
-                    clr_result=false;
-                }
-                display.setText("-");
+                    clr_result = false;
+               }
+                //toggle negative
+                String s = display.getText().toString();
+                s = (s.indexOf("-") ==0) ? s.replaceAll("-","") : "-"+s;
+                display.setText(s);
+
             }
         });
         btnClr.setOnClickListener(new View.OnClickListener() {
@@ -296,8 +300,12 @@ public class MainActivity extends AppCompatActivity {
                 if(optr!=Operator.none&&display.getText()!=""){
                     Execute();
                     String s=val1.toString();
+
                     s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
+                    //if result is "-0"
+                    s = s.indexOf("-") ==0 && s.length() == 2 && s.indexOf("0") ==1 ? s.replaceAll("-","") : s;
                     display.setText(s);
+
                     val1 = Double.parseDouble(display.getText().toString());
 
                 }
