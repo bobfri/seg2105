@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         btnNeg = findViewById(R.id.btnNeg);
         display = findViewById(R.id.displayNum);
 
+        //adds zero to the screen
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText()+"0");
             }
         });
+        //adds one to the screen
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText()+"1");
             }
         });
+        //adds two to the screen
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText()+"2");
             }
         });
+        //adds three to the screen
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText()+"3");
             }
         });
+        //adds four to the screen
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText()+"4");
             }
         });
+        //adds five to the screen
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText()+"5");
             }
         });
+        //adds six to the screen
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText()+"6");
             }
         });
+        //adds seven to the screen
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText()+"7");
             }
         });
+        //adds eight to the screen
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText()+"8");
             }
         });
+        //adds nine to the screen
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText()+"9");
             }
         });
+        //adds decimal to the screen
         btnDec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -155,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
                 display.setText(display.getText() + ".");
             }
         });
+        //toggles negative to the screen
         btnNeg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -169,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        //clears the screen then the operation selected
         btnClr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -186,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        //execute last operation needed. then prepares for addion
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -213,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
                 clr_result=true;
             }
         });
+        //execute last operation needed. then prepares for subtraction
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -242,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        //execute last operation needed. then prepares for multiplication
         btnMult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -268,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
                 clr_result=true;
             }
         });
+        //execute last operation needed. then prepares for division
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -294,6 +311,7 @@ public class MainActivity extends AppCompatActivity {
                 clr_result=true;
             }
         });
+        //execute last operation
         btnEql.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -307,7 +325,6 @@ public class MainActivity extends AppCompatActivity {
                     display.setText(s);
 
                     val1 = Double.parseDouble(display.getText().toString());
-
                 }
                 flipcolor(1);
                 optr = Operator.none;
@@ -317,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
-
+    //toggle the color of the button of the operation selected
     private void flipcolor(int i) {
         btnEql.setBackgroundColor(Color.parseColor("#FF6200EE"));
         btnDiv.setBackgroundColor(Color.parseColor("#FF6200EE"));
@@ -339,7 +356,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
+    //execute the math operation.
     private void Execute() {
         if(!clr_result) {
             try {
