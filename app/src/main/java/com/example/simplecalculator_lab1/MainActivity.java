@@ -18,55 +18,72 @@ public class MainActivity extends AppCompatActivity {
     /**
      * The Button 0.
      */
-    Button btn0, /**
+    Button btn0,
+    /**
      * The Button 1.
      */
-    btn1, /**
+    btn1,
+    /**
      * The Button 2.
      */
-    btn2, /**
+    btn2,
+    /**
      * The Button 3.
      */
-    btn3, /**
+    btn3,
+    /**
      * The Button 4.
      */
-    btn4, /**
+    btn4,
+    /**
      * The Button 5.
      */
-    btn5, /**
+    btn5,
+    /**
      * The Button 6.
      */
-    btn6, /**
+    btn6,
+    /**
      * The Button 7.
      */
-    btn7, /**
+    btn7,
+    /**
      * The Button 8.
      */
-    btn8, /**
+    btn8,
+    /**
      * The Button 9.
      */
-    btn9, /**
+    btn9,
+    /**
      * The Button plus.
      */
-    btnPlus, /**
+    btnPlus,
+    /**
      * The Button minus.
      */
-    btnMinus, /**
+    btnMinus,
+    /**
      * The Button times.
      */
-    btnMult, /**
+    btnMult,
+    /**
      * The Button decimal.
      */
-    btnDec, /**
+    btnDec,
+    /**
      * The Button divide.
      */
-    btnDiv, /**
+    btnDiv,
+    /**
      * The Button clear.
      */
-    btnClr, /**
+    btnClr,
+    /**
      * The Button equal.
      */
-    btnEql, /**
+    btnEql,
+    /**
      * The Button negative.
      */
     btnNeg;
@@ -79,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * The Val 1.
      */
-    Double val1, /**
+    Double val1,
+    /**
      * The Val 2.
      */
     val2;
@@ -102,22 +120,22 @@ public class MainActivity extends AppCompatActivity {
          */
         add,
         /**
-         * Sub operator.
+         * Subtract operator.
          */
         sub,
         /**
-         * Mul operator.
+         * Multiply operator.
          */
         mul,
         /**
-         * Div operator.
+         * Divide operator.
          */
         div}
 
     /**
-     * The Optr.
+     * The Operator to execute next.
      */
-    public Operator optr = Operator.none;
+    Operator optr = Operator.none;
 
     /**
      * when state is created, the view is switch to activity_main.xml,
@@ -173,26 +191,14 @@ public class MainActivity extends AppCompatActivity {
         btnDec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(clr_result){
-                    display.setText("");
-                    clr_result=false;
-                }
-                display.setText(display.getText() + ".");
+                addDote();
             }
         });
         //toggles negative to the screen
         btnNeg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clr_result) {
-                    display.setText("");
-                    clr_result = false;
-               }
-                //toggle negative
-                String s = display.getText().toString();
-                s = (s.indexOf("-") ==0) ? s.replaceAll("-","") : "-"+s;
-                display.setText(s);
-
+                addNeg();
             }
         });
         //clears the screen then the operation selected
@@ -214,117 +220,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //execute last operation needed. then prepares for addion
-        btnPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(optr!=Operator.none&&display.getText()!=""){
-                    Execute();
-                    String s=val1.toString();
-                    s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
-                    display.setText(s);
-
-                }
-                flipColor(5);
-                optr = Operator.add;
-                if(display.getText()!=""){
-                    try {
-                        val1 = Double.parseDouble(display.getText().toString());
-                    }catch (Exception e){
-                        display.setText("Invalid Syntax");
-                        optr = Operator.none;
-                        flipColor(0);
-                    }
-                }else{
-                    optr = Operator.none;
-                    flipColor(0);
-                }
-                clr_result=true;
-            }
-        });
+        btnPlus.setOnClickListener(new OperatorClick(5, Operator.add));
         //execute last operation needed. then prepares for subtraction
-        btnMinus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(optr!=Operator.none&&display.getText()!=""){
-                    Execute();
-                    String s=val1.toString();
-                    s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
-                    display.setText(s);
-
-                }
-
-                flipColor(4);
-                optr = Operator.sub;
-                if(display.getText()!=""){
-                    try {
-                        val1 = Double.parseDouble(display.getText().toString());
-                    }catch (Exception e){
-                        display.setText("Invalid Syntax");
-                        optr = Operator.none;
-                        flipColor(0);
-                    }
-                }else{
-                    optr = Operator.none;
-                    flipColor(0);
-                }
-                clr_result=true;
-
-            }
-        });
+        btnMinus.setOnClickListener(new OperatorClick(4, Operator.sub));
         //execute last operation needed. then prepares for multiplication
-        btnMult.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(optr!=Operator.none&&display.getText()!=""){
-                    Execute();
-                    String s=val1.toString();
-                    s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
-                    display.setText(s);
-                }
-                optr = Operator.mul;
-                flipColor(3);
-                if(display.getText()!=""){
-                    try {
-                        val1 = Double.parseDouble(display.getText().toString());
-                    }catch (Exception e){
-                        display.setText("Invalid Syntax");
-                        optr = Operator.none;
-                        flipColor(0);
-                    }
-                }else{
-                    optr = Operator.none;
-                    flipColor(0);
-                }
-                clr_result=true;
-            }
-        });
+        btnMult.setOnClickListener(new OperatorClick(3, Operator.mul));
         //execute last operation needed. then prepares for division
-        btnDiv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(optr!=Operator.none&&display.getText()!=""){
-                    Execute();
-                    String s=val1.toString();
-                    s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
-                    display.setText(s);
-                }
-                optr = Operator.div;
-                flipColor(2);
-                if(display.getText()!=""){
-                    try {
-                        val1 = Double.parseDouble(display.getText().toString());
-                    }catch (Exception e){
-                        display.setText("Invalid Syntax");
-                        optr = Operator.none;
-                        flipColor(0);
-                    }
-                }else{
-                    optr = Operator.none;
-                    flipColor(0);
-                }
-                clr_result=true;
-            }
-        });
+        btnDiv.setOnClickListener(new OperatorClick(2, Operator.div));
         //execute last operation
         btnEql.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -347,6 +249,31 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+    }
+
+    /**
+     * toggles the negative on the display
+     */
+    private void addNeg() {
+        if (clr_result) {
+            display.setText("");
+            clr_result = false;
+        }
+        //toggle negative
+        String s = display.getText().toString();
+        s = (s.indexOf("-") ==0) ? s.replaceAll("-","") : "-"+s;
+        display.setText(s);
+    }
+
+    /**
+     * adds a dot on the display.
+     */
+    private void addDote() {
+        if(clr_result){
+            display.setText("");
+            clr_result=false;
+        }
+        display.setText(display.getText() + ".");
     }
 
     /**
@@ -457,7 +384,7 @@ public class MainActivity extends AppCompatActivity {
      */
     class ButtonClick implements View.OnClickListener{
         /**
-         * The Num.
+         * The Number on the button.
          */
         int num;
 
@@ -482,6 +409,63 @@ public class MainActivity extends AppCompatActivity {
                 clr_result=false;
             }
             display.setText(display.getText()+String.valueOf(num));
+        }
+    }
+
+    /**
+     * OnClickListener implementation to be used with the operator buttons.
+     */
+    class OperatorClick implements View.OnClickListener{
+        /**
+         * then number to sent when calling {@link MainActivity#flipColor(int)}
+         */
+        int i;
+        /**
+         * The Operator on the button.
+         */
+        Operator optr_;
+
+
+        /**
+         * Constructor of the onClickListener
+         *
+         * @param i     the number to use on the filpColor call
+         * @param optr_ Operator value that would be set on the click
+         */
+        public OperatorClick(int i, Operator optr_) {
+            this.i = i;
+            this.optr_ = optr_;
+        }
+
+        /**
+         * will execute the last operation called, set {@link OperatorClick#optr_} to {@link MainActivity#optr}, call {@link MainActivity#flipColor(int)}, and finaly will set {@link MainActivity#clr_result} as true
+         * @param view
+         */
+        @Override
+        public void onClick(View view) {
+            if(optr!=Operator.none&&display.getText()!=""){
+                Execute();
+                String s=val1.toString();
+                s = s.indexOf(".") < 0 ? s : s.replaceAll("0*$", "").replaceAll("\\.$", "");
+                display.setText(s);
+
+            }
+
+            flipColor(i);
+            optr = optr_;
+            if(display.getText()!=""){
+                try {
+                    val1 = Double.parseDouble(display.getText().toString());
+                }catch (Exception e){
+                    display.setText("Invalid Syntax");
+                    optr = Operator.none;
+                    flipColor(0);
+                }
+            }else{
+                optr = Operator.none;
+                flipColor(0);
+            }
+            clr_result=true;
         }
     }
 }
