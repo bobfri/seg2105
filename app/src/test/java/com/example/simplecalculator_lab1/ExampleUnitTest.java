@@ -15,6 +15,7 @@ public class ExampleUnitTest {
         assertEquals("Integer addition: 2+2 ",4, 2 + 2);
         assertEquals("negative Integer addition: -3+2 ",-1, -3 + 2);
         assertEquals("decimal addition: 0.5+0.2 ",0.7, 0.5 + 0.2, 0.01);
+		assertEquals("negative Integer addition: -4+-7",-11,-4 + -7);
 
     }
     @Test
@@ -22,6 +23,7 @@ public class ExampleUnitTest {
         assertEquals("Integer subtraction: 70-35 ",35, 70 - 35);
         assertEquals("Integer subtraction with negative values: -70-35 ",-105, -70 - 35);
         assertEquals("subtraction with decimal values: 5-8.7 ",-3.7, 5 - 8.7, 0.01);
+		assertEquals("negative subtraction with decimal values: -4.2-3", -7.2,-4.2-3);
     }
 
     @Test
@@ -29,12 +31,14 @@ public class ExampleUnitTest {
         assertEquals("Integer multiplication: 9*8 ",72, 9 * 8);
         assertEquals("Integer multiplication with negative values: -2*3 ",-6, -2 * 3);
         assertEquals("multiplication with decimal values: 3*1.5 ",4.5, 3 * 1.5, 0.01);
+		assertEquals("negative multiplication with decimal values:-3.5*2", -7, -3.5*2);
     }
     @Test
     public void division_isCorrect() {
         assertEquals("Integer division: 9/9 ",1, 9 / 9);
         assertEquals("Integer division: 144/-12 ",-12, 144/-12 );
         assertEquals("Division with decimal values: 5/8.7 ",0.5747, 5 / 8.7, 0.0001);
+		assertEquals("negative division with decimal values:-12.5/2.5",-5,-12.5/2.5);
     }
 
 }
